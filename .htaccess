@@ -1,0 +1,25 @@
+# Enable caching for all resources but for 3600 seconds
+<FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp|css|js)$">
+    Header set Cache-Control "max-age=3600, public"
+    Header set Expires "now + 3600"
+</FilesMatch>
+
+# Enable the rewrite engine
+RewriteEngine On
+
+# Special rule for direct access to chapter.php with query parameters
+# This must come BEFORE other rules to prevent it from being redirected
+RewriteCond %{REQUEST_URI} ^/database/manga/chapter\.php$ [OR]
+RewriteCond %{REQUEST_URI} ^/database/pages/chapter\.php$
+RewriteRule .* - [L]
+
+# Redirect manga-name.php to manga.php?name=manga-name
+RewriteRule ^database/manga/([a-z0-9-]+)\.php$ /database/pages/manga.php?name=$1 [L,QSA]
+
+# Redirect manga-name-chapitre-X.php to chapter.php?manga=manga-name&chapter=X
+RewriteRule ^database/manga/([a-z0-9-]+)-chapitre-([0-9]+)\.php$ /database/pages/chapter.php?manga=$1&chapter=$2 [L,QSA]
+
+# If you need to handle URLs with spaces or special characters in manga names
+# Add this rule to handle URL-encoded manga names in the query string
+RewriteCond %{QUERY_STRING} ^manga=([^&]+)&chapter=([0-9]+)$
+RewriteRule ^database/manga/chapter\.php$ /database/pages/chapter.php?manga=%1&chapter=%2 [L]

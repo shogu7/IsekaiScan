@@ -1,0 +1,196 @@
+:root {
+  --primary-color: #0099cc;
+  --primary-dark: #0077aa;
+  --secondary-color: #111827;
+  --text-light: #f9fafb;
+  --text-dark: #1f2937;
+  --background-dark: #0f172a;
+  --background-card: #1e293b;
+  --accent-color: #3b82f6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.hero-slider {
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: 400%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.slide-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+.slide-content p {
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+/* Recruitment Banner */
+.recruitment-banner {
+  background-color: rgba(30, 41, 59, 0.8);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.recruitment-banner i {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.recruitment-banner p {
+  flex-grow: 1;
+}
+
+.recruitment-banner strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.section-title {
+  margin: 2rem 5%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.section-title span {
+  color: var(--primary-color);
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background-color: var(--primary-color);
+}
+
+.manga-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0 5%;
+  margin-bottom: 2rem;
+}
+
+.manga-card {
+  flex: 0 0 calc(25% - 1.5rem);
+  background-color: var(--background-card);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.manga-card:hover {
+  transform: translateY(-5px);
+}
+
+.manga-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.manga-info {
+  padding: 1rem;
+}
+
+.manga-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.manga-info p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.manga-info .meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+@media (max-width: 1024px) {
+  .manga-card {
+    flex: 0 0 calc(33.333% - 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 350px;
+  }
+  
+  .manga-card {
+    flex: 0 0 calc(50% - 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .manga-card {
+    flex: 0 0 100%;
+  }
+  
+  .hero-slider {
+    height: 250px;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.5rem;
+  }
+}

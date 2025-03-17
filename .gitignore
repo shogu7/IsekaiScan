@@ -1,0 +1,15 @@
+# Ignorer le fichier .env
+.env
+
+# Ignorer les logs et les fichiers temporaires
+*.log
+tmp/
+cache/
+
+# Ignorer les fichiers de configuration spécifiques au serveur
+/config.php
+/database/config.php
+
+# Ignorer les dossiers contenant des images et scans
+/assets/images/
+/assets/scans/
