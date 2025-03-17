@@ -2,10 +2,12 @@
 
 $basePath = '/var/www/isekaiscan/assets/scans';
 
-$host     = 'localhost';
-$dbname   = "isekaiscan_db";
-$username = 'isekaiuser';
-$password = 'Natixis0607&*';
+$dotenv = parse_ini_file('/var/www/isekaiscan/.env');
+
+$host = $dotenv['DB_HOST'];
+$dbname = $dotenv['DB_NAME'];
+$username = $dotenv['DB_USER'];
+$password = $dotenv['DB_PASSWORD'];
 
 try {
     $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
@@ -14,7 +16,6 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-
 $directories = array_filter(glob($basePath . '/*'), 'is_dir');
 
 foreach ($directories as $dir) {
