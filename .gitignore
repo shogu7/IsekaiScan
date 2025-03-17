@@ -1,15 +1,13 @@
-# Ignorer le fichier .env
 .env
-
-# Ignorer les logs et les fichiers temporaires
 *.log
+config.php
+/database/config.php
 tmp/
 cache/
-
-# Ignorer les fichiers de configuration spécifiques au serveur
-/config.php
-/database/config.php
-
-# Ignorer les dossiers contenant des images et scans
 /assets/images/
 /assets/scans/
+vendor/
+node_modules/
+.DS_Store
+.idea/
+.vscode/
